@@ -1,0 +1,6 @@
+export(entrez_email)
+export(fetch_in_chunks)
+export(get_articles_by_terms)
+export(pubmed_fetch)
+import(RCurl)
+import(XML)
