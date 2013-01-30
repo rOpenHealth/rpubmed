@@ -5,11 +5,17 @@ Version: 0.1
 License: GPL-3
 Title: RPubmed
 Description: Tools for extracting literature data from Pubmed.
+Depends:
+    RCurl,
+    RJSONIO,
+    XML
 Suggests:
     testthat,
-    roxygen2
+    roxygen2,
+    maps
 Collate:
     'global_vars.R'
     'rpubmed_fetch.R'
     'rpubmed_io.R'
     'rpubmed_textsearch.R'
+    'rpubmed_locations.R'

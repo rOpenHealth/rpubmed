@@ -1,15 +1,16 @@
-#require(XML)
+#equire(XML)
 #require(RCurl)
 
 #' Downloads abstracts and Metadata from Pubmed, storing as R objects
 #' Splits large id vectors into a list of smaller chunks, so as not to hammer the entrez server! 
-#'
+#' If you are making large bulk downloads, consider setting a delay so the downloading starts at offpeak USA times.
 #'
 #'
 #' @export 
 #' @import XML RCurl
 #' @param ids integer Pubmed ID's to get abstracts and metadata from
 #' @param chunk_size Number of articles to be pulled with each call to pubmed_fetch (optional)
+#' @param delay Integer Number of hours to wait before downloading starts
 #' @param \dots character Additional terms to add to the request
 #' @return list containing abstratcs and metadata for each ID
 #' @examples
@@ -20,7 +21,8 @@
 #' 
 
 
-fetch_in_chunks <- function(ids, chunk_size = 500, ...){
+fetch_in_chunks <- function(ids, chunk_size = 500, delay = 0, ...){
+    Sys.sleep(delay * 3600)         # Wait for appropriate time for the server.
     chunks <- chunker(ids, chunk_size)
     Reduce(append, lapply(chunks, function(x) pubmed_fetch(x, ...)))
 }
@@ -61,11 +63,4 @@ pubmed_fetch <- function(ids, file_format = "xml", as_r_object = TRUE, ...){
 chunker <- function(v, chunk_size){
     split(v, ceiling(seq_along(v)/chunk_size))
 }
-
-
-
-
-
-
-
 

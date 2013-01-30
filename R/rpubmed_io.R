@@ -1,5 +1,5 @@
 # Document this page properly!
-require(RJSONIO)
+#require(RJSONIO)
 
 # Write a list of (e.g.) Pubmed records (e.g.) from rpubmed_fetch_in_chunks to json file 
 write_JSON_file <- function(x, file){
