@@ -3,7 +3,7 @@
 
 #' Downloads abstracts and Metadata from Pubmed, storing as R objects
 #' Splits large id vectors into a list of smaller chunks, so as not to hammer the entrez server! 
-#' If you are making large bulk downloads, consider setting a delay so the downloading starts at offpeak USA times.
+#' If you are making large bulk downloads, consider setting a delay so the downloading starts at off-peak USA times.
 #'
 #'
 #' @export 

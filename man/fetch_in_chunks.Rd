@@ -2,7 +2,7 @@
 \alias{fetch_in_chunks}
 \title{Downloads abstracts and Metadata from Pubmed, storing as R objects
 Splits large id vectors into a list of smaller chunks, so as not to hammer the entrez server!
-If you are making large bulk downloads, consider setting a delay so the downloading starts at offpeak USA times.}
+If you are making large bulk downloads, consider setting a delay so the downloading starts at off-peak USA times.}
 \usage{
   fetch_in_chunks(ids, chunk_size = 500, delay = 0, ...)
 }
@@ -27,7 +27,7 @@ If you are making large bulk downloads, consider setting a delay so the download
   R objects Splits large id vectors into a list of smaller
   chunks, so as not to hammer the entrez server! If you are
   making large bulk downloads, consider setting a delay so
-  the downloading starts at offpeak USA times.
+  the downloading starts at off-peak USA times.
 }
 \examples{
 # Get IDs via rentrez_search:

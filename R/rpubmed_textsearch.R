@@ -34,6 +34,21 @@ get_articles_by_terms <- function(corpus, term_list, where, case_sensitive = FAL
     }
 }
 
+
+#' Returns a list of MeSH headings for an article
+#' @export
+#' @param article List representing a single Pubmed Record e.g. an element from a list returned from fetch_in_chunks()
+#' @return list of MeSHHeadings
+#' 
+#' 
+get_mesh_headings <- function(article){
+    lapply(article$MedlineCitation$MeshHeadingList, 
+           function(x) {
+               if(is.null(x$DescriptorName$text)) x$DescriptorName
+               else x$DescriptorName$text
+           })
+}
+
 # Helper functions:
 
 #' concatenates abstract list to a single sting
@@ -41,9 +56,9 @@ abstract_to_text <- function(article){
     paste(unlist(article$MedlineCitation$Article$Abstract), collapse = " ")
 }
 
-#' concatenates a list of MeSh headings to a single string
+#' concatenates a list of MeSH headings to a single string
 mesh_to_text <- function(article){
-    paste(unlist(lapply(article$MedlineCitation$MeshHeadingList, function(x) x$DescriptorName)), collapse = " ")
+    paste(unlist(get_mesh_headings(article)), collapse = " ")
 }
 
 
