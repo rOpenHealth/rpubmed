@@ -30,7 +30,7 @@ get_articles_by_terms <- function(corpus, term_list, where, case_sensitive = FAL
     if(length(term_list) <= 1){
         return(corpus)
     } else {
-        return(get_articles_by_terms(corpus, term_list[2:length(term_list)]))
+        return(get_articles_by_terms(corpus, term_list[2:length(term_list)], where = where))
     }
 }
 

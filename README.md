@@ -6,6 +6,7 @@ Tools for extracting and processing records from Pubmed and Pubmed Central.
 
 This project is still very much in development... Please contact me with any questions, suggestions or bug reports.
 
+I have built in support for searching and processing [MeSH headings](http://www.nlm.nih.gov/bsd/disted/meshtutorial/introduction/index.html), making this package of particular use for biomedical researchers conducting systematic reviews and meta-analyses.
 
 ### Done:
 
@@ -28,6 +29,7 @@ This project is still very much in development... Please contact me with any que
 * Download and mine PMC articles
 * Example gh_pages page
 * Improve this page
+* Documenting io file
 
 
 
