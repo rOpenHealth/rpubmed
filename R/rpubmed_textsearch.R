@@ -34,6 +34,22 @@ get_articles_by_terms <- function(corpus, term_list, where, case_sensitive = FAL
     }
 }
 
+#' Gives a breakdown of records per year in a corpus of Pubmed Records
+#' 
+#' @export
+#' @param corpus a list of Pubmed records e.g. as given by fetch_in_chunks()
+#' @return dataframe with year and Number_records columns
+#' 
+#' 
+record_counts_by_year <- function(corpus){
+    years_table <- table(sapply(corpus, 
+           function(x) as.numeric(x$PubmedData$History$PubMedPubDate$Year), 
+           simplify = TRUE))
+    years_df <- data.frame(years_table)
+    names(years_df) <- c("year", "records")
+    years_df$year <- as.integer(as.character(years_df$year))
+    years_df
+}
 
 #' Returns a list of MeSH headings for an article
 #' @export

@@ -1,7 +1,6 @@
 # Tools for geocoding addresses affiliated with Pubmed Records
 # Geocoder still needs some work - Not a good enough hit rate...
 
-#abstracts <- fromJSON("Test/plasticity_ids.json")
 #' Returns a data frame of geocoded addresses with longitude and latitudes
 #' Uses the Google Maps geocode API
 #' @export 

@@ -1,9 +1,16 @@
 # Document this page properly!
 #require(RJSONIO)
 
-# Write a list of (e.g.) Pubmed records (e.g.) from rpubmed_fetch_in_chunks to json file 
+#' Write a list of (e.g.) Pubmed records (e.g.) from rpubmed_fetch_in_chunks to json file 
+#' @import RJSONIO
 write_JSON_file <- function(x, file){
     cat(toJSON(x), file = file)
+}
+
+#' Redundant wrapper around fromJSON
+#' @import RJSONIO
+read_article_json <- function(filename, ...){
+    fromJSON(filename, ...)
 }
 
 # Writes article title, citation info and abstracts to file or sdout
@@ -16,7 +23,7 @@ write_abstracts <- function(articles, out_file = ""){
                          function(x) if(is.list(x)) paste(x$ForeName, x$LastName)), collapse = ", "),
             paste(article$MedlineCitation$Article$Journal$Title, " vol. ",
                   article$MedlineCitation$Article$Journal$JournalIssue$Volume, "(",
-                  article$MedlineCitation$Article$Journal$JournalIssue$PubDate[["Year"]], ")", sep=""), 
+                  article$PubmedData$History$PubMedPubDate$Year, ")", sep=""), 
             paste("Abstract:", abstract_to_text(article)), "\n", 
             sep = "\n", file = out_file, append = appending)
         appending <- TRUE
@@ -39,7 +46,7 @@ write_record_list <- function(articles, out_file = ""){
         title <- article$MedlineCitation$Article$ArticleTitle
         journal <- article$MedlineCitation$Article$Journal$Title
         volume <- article$MedlineCitation$Article$Journal$JournalIssue$Volume
-        year <- article$MedlineCitation$Article$Journal$JournalIssue$PubDate[["Year"]]
+        year <- article$PubmedData$History$PubMedPubDate$Year
         pages <- article$MedlineCitation$Article$Pagination[["MedlinePgn"]]
         display <- sprintf("%s. (%s). %s %s. %s: %s",
                                        display.author, year, title, journal, volume, pages)
