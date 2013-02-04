@@ -38,16 +38,20 @@ get_articles_by_terms <- function(corpus, term_list, where, case_sensitive = FAL
 #' 
 #' @export
 #' @param corpus a list of Pubmed records e.g. as given by fetch_in_chunks()
+#' @param year_min integer representing the earliest year to be included in the counts
+#' @param year_max integer representing the latest year to be included in the counts. Frequencies are calculated after the dataset is truncated.
 #' @return dataframe with year, records and freq columns
 #' 
 #' 
-record_counts_by_year <- function(corpus){
+record_counts_by_year <- function(corpus, year_min = FALSE, year_max = FALSE){
     years_table <- table(sapply(corpus, 
            function(x) as.numeric(x$PubmedData$History$PubMedPubDate$Year), 
            simplify = TRUE))
     years_df <- data.frame(years_table)
     names(years_df) <- c("year", "records")
     years_df$year <- as.integer(as.character(years_df$year))
+    if(is.numeric(year_min)) years_df <- years_df[years_df$year >= year_min,]
+    if(is.numeric(year_max)) years_df <- years_df[years_df$year <= year_max,]
     years_df$freq <- with(years_df, years_df$records / sum(years_df$records))
     years_df
 }
