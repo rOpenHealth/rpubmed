@@ -1,9 +1,9 @@
-Package: RPubmed
+Package: rpubmed
 Maintainer: David Springate <daspringate@gmail.com>
 Author: David Springate
 Version: 0.1
 License: GPL-3
-Title: RPubmed
+Title: rpubmed
 Description: Tools for extracting literature data from Pubmed.
 Depends:
     RCurl,

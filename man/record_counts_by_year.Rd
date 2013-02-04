@@ -9,7 +9,7 @@
   fetch_in_chunks()}
 }
 \value{
-  dataframe with year and Number_records columns
+  dataframe with year, records and freq columns
 }
 \description{
   Gives a breakdown of records per year in a corpus of
