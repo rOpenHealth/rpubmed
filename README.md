@@ -19,11 +19,9 @@ I have built in experimental support for searching and processing [MeSH headings
 * textsearch  - Tools for text-mining of abstracts and metadata from downloaded records
     - `get_articles_by_terms(corpus, term_list, where, case_sensitive = FALSE)`
     - `record_counts_by_year(corpus)`
-    - `get_mesh_headings(article)` - TODO: Transfer to mesh
 * io - saving records to disk and printing summaries of abstract lists to file or sdout
     - `write_JSON_file(x, file)`
-    - `write_abstracts(articles, out_file = "")`
-    - `write_record_list(articles, out_file = "")`
+    - `write_record_list(articles, out_file = "", abstract_p = FALSE, markdown_p = FALSE, linestart = "* ")`
 * locations - Geocoding functionality added for finding the coordinates of departments affiliated with Pubmed Articles.
     - `geocode_addresses(addresses, sleeper = 0.33, depth = 3)`
     - `get_article_location_data(abstracts)`
