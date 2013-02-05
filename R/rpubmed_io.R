@@ -1,7 +1,5 @@
-# Document this page properly!
-#require(RJSONIO)
-
 #' Write a list of (e.g.) Pubmed records (e.g.) from rpubmed_fetch_in_chunks to json file 
+#' @export
 #' @import RJSONIO
 write_JSON_file <- function(x, file){
     cat(toJSON(x), file = file)
@@ -13,26 +11,17 @@ read_article_json <- function(filename, ...){
     fromJSON(filename, ...)
 }
 
-# Writes article title, citation info and abstracts to file or sdout
-write_abstracts <- function(articles, out_file = ""){
-    appending <- FALSE
-    for(article in articles){
-        authors <- article$MedlineCitation$Article$AuthorList
-        cat(article$MedlineCitation$Article$ArticleTitle,
-            paste(lapply(authors[sapply(authors, is.list)], 
-                         function(x) if(is.list(x)) paste(x$ForeName, x$LastName)), collapse = ", "),
-            paste(article$MedlineCitation$Article$Journal$Title, " vol. ",
-                  article$MedlineCitation$Article$Journal$JournalIssue$Volume, "(",
-                  article$PubmedData$History$PubMedPubDate$Year, ")", sep=""), 
-            paste("Abstract:", abstract_to_text(article)), "\n", 
-            sep = "\n", file = out_file, append = appending)
-        appending <- TRUE
-    }
-}
-
-# Writes article title and citation data to file or stdout
-write_record_list <- function(articles, out_file = ""){
-    # Writes article title and citation data to file or stdout
+#' Writes article title and citation data to file or stdout.  Can optionally also output abstracts and output as Markdown, with customisable line starts, e.g. for unordered lists
+#' @export
+#' @param articles A list of Pubmed Records e.g. as returned by fetch_in_chunks()
+#' @param out_file character file to write results to. Empty string returns to stdout
+#' @param abstract_p boolean Output the abstract?
+#' @linestart Character string to add at the front of each line, controlling markdown output. Default is "* " 
+#' @param markdown_p boolean Output as markdown?
+#' @return NULL
+#' 
+#'
+write_record_list <- function(articles, out_file = "", abstract_p = FALSE, markdown_p = FALSE, linestart = "* "){
     appending <- FALSE
     for(article in articles){
         authors <- article$MedlineCitation$Article$AuthorList
@@ -48,14 +37,20 @@ write_record_list <- function(articles, out_file = ""){
         volume <- article$MedlineCitation$Article$Journal$JournalIssue$Volume
         year <- article$PubmedData$History$PubMedPubDate$Year
         pages <- article$MedlineCitation$Article$Pagination[["MedlinePgn"]]
-        display <- sprintf("%s. (%s). %s %s. %s: %s",
-                                       display.author, year, title, journal, volume, pages)
+        abstract <- paste("Abstract:", abstract_to_text(article))
+        if(markdown_p) display_string <- "%s__%s. (%s)__. %s _%s_. %s: %s"
+        else {
+            display_string <- "%s%s. (%s). %s %s. %s: %s"
+            linestart <- ""
+        }
+        if(abstract_p){
+            display <- sprintf(paste(display_string, "\n%s\n"),
+                               linestart, display.author, year, title, journal, volume, pages, abstract)
+        } else {
+            display <- sprintf(display_string,
+                               linestart, display.author, year, title, journal, volume, pages)
+        }
         cat(display, "\n", file = out_file, append = appending)
         appending <- TRUE
     }
 }
-
-
-
-
-
