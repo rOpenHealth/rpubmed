@@ -4,11 +4,14 @@ rpubmed
 Tools for extracting and processing records from Pubmed and Pubmed Central.
 ----------------------------------------------------------------------------
 
-This project is still very much in development... Please contact me with any questions, suggestions or bug reports.
+This project is still very much in development... Please contact me with any questions, suggestions or bug reports.  
 
-I have built in support for searching and processing [MeSH headings](http://www.nlm.nih.gov/bsd/disted/meshtutorial/introduction/index.html), making this package of particular use for biomedical researchers conducting systematic reviews and meta-analyses.
+I have built in experimental support for searching and processing [MeSH headings](http://www.nlm.nih.gov/bsd/disted/meshtutorial/introduction/index.html) in the mesh_experimental branch.  This will soon be merged into master, making this package of particular use for biomedical researchers conducting systematic reviews and meta-analyses.
 
-### Done:
+
+
+
+### Available functions:
 
 * fetch - Tools for bulk downloading of Pubmed records
     - `fetch_in_chunks(ids, chunk_size = 500, delay = 0, ...)`
@@ -26,23 +29,6 @@ I have built in support for searching and processing [MeSH headings](http://www.
     - `get_article_location_data(abstracts)`
     - `geocode_address(address, depth = 3)`
 
-
-### Doing:
-
-* mesh - Processing and visualising MeSh headings
-    - Association matrices
-    - Network graphs of article MeSH headings
-* Download Pubmed IDs by article titles
-
-
-### To do:
-
-* More sophisticated text-mining functions
-* Improve geocoding hit-rate
-* Download and mine PMC articles
-* Example gh_pages page
-* Improve this page
-* Documenting io file
 
 
 

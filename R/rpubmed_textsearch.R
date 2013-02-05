@@ -59,7 +59,7 @@ record_counts_by_year <- function(corpus, year_min = FALSE, year_max = FALSE){
 
 # Helper functions:
 
-#' concatenates abstract list to a single sting
+#' concatenates abstract list to a single string
 abstract_to_text <- function(article){
     paste(unlist(article$MedlineCitation$Article$Abstract), collapse = " ")
 }
