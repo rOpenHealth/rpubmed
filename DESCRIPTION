@@ -19,4 +19,3 @@ Collate:
     'rpubmed_io.R'
     'rpubmed_textsearch.R'
     'rpubmed_locations.R'
-    'rpubmed_mesh.R'
