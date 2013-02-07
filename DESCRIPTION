@@ -8,8 +8,7 @@ Description: Tools for extracting literature data from Pubmed.
 Depends:
     RCurl,
     RJSONIO,
-    XML,
-    rentrez
+    XML
 Suggests:
     testthat,
     roxygen2,
