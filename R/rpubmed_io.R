@@ -16,7 +16,7 @@ read_article_json <- function(filename, ...){
 #' @param articles A list of Pubmed Records e.g. as returned by fetch_in_chunks()
 #' @param out_file character file to write results to. Empty string returns to stdout
 #' @param abstract_p boolean Output the abstract?
-#' @linestart Character string to add at the front of each line, controlling markdown output. Default is "* " 
+#' @param linestart Character string to add at the front of each line, controlling markdown output. Default is "* " 
 #' @param markdown_p boolean Output as markdown?
 #' @return NULL
 #' 

@@ -15,6 +15,9 @@
 
   \item{abstract_p}{boolean Output the abstract?}
 
+  \item{linestart}{Character string to add at the front of
+  each line, controlling markdown output. Default is "* "}
+
   \item{markdown_p}{boolean Output as markdown?}
 }
 \value{
