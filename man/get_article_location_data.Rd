@@ -17,7 +17,9 @@ email addresses are cleaned out.}
   metadata email addresses are cleaned out.
 }
 \examples{
+\dontrun{
 # Extract affiliated addresses from article metadata:
 affil_addresses <- get_article_location_data(abstracts)
+}
 }
 

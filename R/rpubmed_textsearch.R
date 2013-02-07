@@ -10,8 +10,7 @@
 #' @param where A predicate function referring to a search in an area of the record. Choose from in_abstract_p, in_mesh_p or in_mesh_abstract_p
 #' @param case_sensitive boolean is the search case sensitive?
 #' @return list containing abstracts and metadata for each ID matching the search criteria
-#' @examples
-#' 
+#' @examples \dontrun{
 #' plasticity_records <- fetch_in_chunks(plasticity_ids)
 #' 
 #' # Search for articles with "plant" and "fish" in the abstract
@@ -19,6 +18,8 @@
 #' 
 #' # Search for records with "plant" or "fish" in the abstract or MeSH headings:
 #' get_articles_by_terms(plasticity_records, list(c("plant", "fish")), where = in_mesh_abstract_p)
+#' }
+
 
 
 get_articles_by_terms <- function(corpus, term_list, where, case_sensitive = FALSE){

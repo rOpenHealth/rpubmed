@@ -39,6 +39,7 @@ e.g. list("gprd", "diabetes") returns articles mentioning gprd and diabtes}
   articles mentioning gprd and diabtes
 }
 \examples{
+\dontrun{
 plasticity_records <- fetch_in_chunks(plasticity_ids)
 
 # Search for articles with "plant" and "fish" in the abstract
@@ -46,5 +47,6 @@ get_articles_by_terms(plasticity_records, list("plant", "fish"), where = in_abst
 
 # Search for records with "plant" or "fish" in the abstract or MeSH headings:
 get_articles_by_terms(plasticity_records, list(c("plant", "fish")), where = in_mesh_abstract_p)
+}
 }
 

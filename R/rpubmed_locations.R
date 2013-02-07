@@ -8,9 +8,8 @@
 #' @param sleeper numeric Number of seconds between calls to the geocoding server
 #' @param depth integer recursion depth for attempting to get coordinates. If the full address fails to get a hit, the function is called again with the first line of the address removed. The process is repeated depth times before returning NAs
 #' @return data frame of addresses, latitudes and longitudes
-#' @examples
-#' 
-#' # get a list of articles pulled from pubmed:
+#' @examples \dontrun{
+#'  # get a list of articles pulled from pubmed:
 #' abstracts <- fromJSON("Test/plasticity_abstracts.json")
 #' 
 #' # Extract affiliated addresses from article metadata:
@@ -23,7 +22,8 @@
 #' 
 #' map("world", col="#f2f2f2", fill=TRUE, bg="white", lwd=0.05)
 #' points(coords$long, coords$lat, col = "red", pch = 20)
-#' 
+#' }
+
 
 geocode_addresses <- function(addresses, sleeper = 0.33, depth = 3){
     coords <- t(sapply(addresses, 
@@ -39,11 +39,11 @@ geocode_addresses <- function(addresses, sleeper = 0.33, depth = 3){
 #' @export 
 #' @param abstracts A list of Pubmed records. e.g. from fetch_in_chunks()
 #' @return character vector of addresses
-#' @examples
+#' @examples \dontrun{
 #' # Extract affiliated addresses from article metadata:
 #' affil_addresses <- get_article_location_data(abstracts)
-#' 
-#' 
+#' }
+
 get_article_location_data <- function(abstracts){
     raw_locations <- as.character(do.call(rbind,
                             lapply(abstracts,
@@ -59,11 +59,11 @@ get_article_location_data <- function(abstracts){
 #' @param depth depth integer recursion depth for attempting to get coordinates. If the full address fails to get a hit, the function is called again with the first line of the address removed. The process is repeated depth times before returning NAs
 #' @return vector of address, lat, long
 #' 
-#' @examples
-#' 
+#' @examples \dontrun{
 #' x <- "Rothamsted Research, Harpenden, Herts AL5 2JQ, UK."
 #' geocode_address(x)
-#' 
+#' }
+
 geocode_address <- function(address, depth = 3){
     coords <- geocode(address)
     if(!is.null(names(coords)) & is.na(coords[1]) & depth > 0){

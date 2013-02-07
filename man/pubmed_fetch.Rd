@@ -26,8 +26,10 @@
   Download data from Pubmed
 }
 \examples{
+\dontrun{
 # Get IDs via rentrez_search:
 plasticity_ids <- entrez_search("pubmed", "phenotypic plasticity", retmax = 2600)$ids[1:100]
 plasticity_records <- pubmed_fetch(plasticity_ids)
+}
 }
 

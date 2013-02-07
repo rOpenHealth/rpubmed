@@ -23,7 +23,9 @@ If no match is found, it recursively calls itself on the address minus the first
   address minus the first line of the address
 }
 \examples{
+\dontrun{
 x <- "Rothamsted Research, Harpenden, Herts AL5 2JQ, UK."
 geocode_address(x)
+}
 }
 

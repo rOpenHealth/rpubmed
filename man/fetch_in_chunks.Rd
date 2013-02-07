@@ -30,8 +30,10 @@ If you are making large bulk downloads, consider setting a delay so the download
   the downloading starts at off-peak USA times.
 }
 \examples{
-# Get IDs via rentrez_search:
-plasticity_ids <- entrez_search("pubmed", "phenotypic plasticity", retmax = 2600)$ids
-plasticity_records <- fetch_in_chunks(plasticity_ids)
+\dontrun{
+ # Get IDs via rentrez_search:
+ plasticity_ids <- entrez_search("pubmed", "phenotypic plasticity", retmax = 2600)$ids
+ plasticity_records <- fetch_in_chunks(plasticity_ids)
+}
 }
 

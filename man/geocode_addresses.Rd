@@ -26,7 +26,8 @@ Uses the Google Maps geocode API}
   and latitudes Uses the Google Maps geocode API
 }
 \examples{
-# get a list of articles pulled from pubmed:
+\dontrun{
+ # get a list of articles pulled from pubmed:
 abstracts <- fromJSON("Test/plasticity_abstracts.json")
 
 # Extract affiliated addresses from article metadata:
@@ -39,5 +40,6 @@ coords <- geocode_addresses(affil_addresses, depth = 4)
 
 map("world", col="#f2f2f2", fill=TRUE, bg="white", lwd=0.05)
 points(coords$long, coords$lat, col = "red", pch = 20)
+}
 }
 
