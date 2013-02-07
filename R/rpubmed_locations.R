@@ -68,7 +68,7 @@ geocode_address <- function(address, depth = 3){
     coords <- geocode(address)
     if(!is.null(names(coords)) & is.na(coords[1]) & depth > 0){
         address <- sub(pattern="[[:alnum:][:punct:][:space:]][^,]*, ?", "", address)
-        return(get_geocode(address, depth = depth -1))
+        return(geocode_address(address, depth = depth -1))
     }
     coords
 }
