@@ -1,7 +1,19 @@
 \name{mesh_assoc_table}
 \alias{mesh_assoc_table}
+\title{Builds an association matrix for all MeSH terms in an article corpus}
 \usage{
-  mesh_assoc_table(m_table)
+  mesh_assoc_table(corpus)
+}
+\arguments{
+  \item{corpus}{a list of Pubmed records. e.g. as returned
+  by fetch_in_chunks()}
+}
+\value{
+  matrix
+}
+\description{
+  Builds an association matrix for all MeSH terms in an
+  article corpus
 }
 \examples{
 \dontrun{

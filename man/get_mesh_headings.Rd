@@ -10,7 +10,7 @@
   fetch_in_chunks()}
 }
 \value{
-  list of MeSHHeadings
+  list of MeSH Headings
 }
 \description{
   Returns a list of MeSH headings for an article
