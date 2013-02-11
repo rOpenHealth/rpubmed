@@ -6,7 +6,7 @@ Tools for extracting and processing records from Pubmed and Pubmed Central.
 
 This project is still very much in development... Please contact me with any questions, suggestions or bug reports.  
 
-I have built in experimental support for searching and processing [MeSH headings](http://www.nlm.nih.gov/bsd/disted/meshtutorial/introduction/index.html) in the mesh_experimental branch.  This will soon be merged into master, making this package of particular use for biomedical researchers conducting systematic reviews and meta-analyses.
+I have built in support for searching and processing [MeSH headings](http://www.nlm.nih.gov/bsd/disted/meshtutorial/introduction/index.html), making this package of particular use for biomedical researchers conducting systematic reviews and meta-analyses. Two of these functions (`mesh_assoc_table` and `keyword_assoc_table`) produce association matrices which can be fed into graph packages such as `igraph` to visualise the associations between different search terms.
 
 
 
@@ -26,6 +26,12 @@ I have built in experimental support for searching and processing [MeSH headings
     - `geocode_addresses(addresses, sleeper = 0.33, depth = 3)`
     - `get_article_location_data(abstracts)`
     - `geocode_address(address, depth = 3)`
+* mesh - Tools for processing and exploring associations between MeSH headings and other keywords
+    - `mesh_assoc_table(corpus)`
+    - `keyword_assoc_table(corpus, keyword_list, ...)`
+    - `get_mesh_headings(article)`
+    - `mesh_heading_frequency(corpus)`
+    
 
 
 

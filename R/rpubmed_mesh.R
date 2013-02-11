@@ -68,8 +68,8 @@ mesh_table <- function(articles){
 #'      kat <- keyword_assoc_table(corpus = articles, keyword_list = keywords, where = in_mesh_abstract_p)
 #'  }
 keyword_assoc_table <- function(corpus, keyword_list, ...){
-    kt <- data.frame(rbind(t(combn(keywords, 2)),
-                           matrix(rep(keywords, each = 2), ncol= 2, byrow = TRUE)), stringsAsFactors = FALSE)
+    kt <- data.frame(rbind(t(combn(keyword_list, 2)),
+                           matrix(rep(keyword_list, each = 2), ncol= 2, byrow = TRUE)), stringsAsFactors = FALSE)
     kt$count <- sapply(1:nrow(kt), 
                        function(i){
                            if(kt[i,1] == kt[i,2]){

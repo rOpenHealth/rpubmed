@@ -19,12 +19,10 @@
 \dontrun{
 
 articles <- fromJSON("Test/PCD_articles.json")
-a = mesh_table(articles)
 diab = get_articles_by_terms(articles, list("diabetes", c("case-control")), where= in_mesh_abstract_p)
-diab_tab <- mesh_table(diab)
-diab_assoc <- mesh_assoc_table(diab_tab)
+diab_assoc <- mesh_assoc_table(diab)
 # list of MeSH headings with frequencies:
-d <- diag(ccsa)
+d <- diag(diab_assoc)
 
 Pick only those appearing in > 5 articles:
 d_5 <- d[d > 5]

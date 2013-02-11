@@ -25,7 +25,7 @@
 \dontrun{
      articles <- fromJSON("Test/PCD_articles.json")
      keywords <- c("effectiveness", "treatment outcome", "comorbidity", "risk factor", "incidence")
-     kat <- keyword_assoc_table(corpus = articles, eyword_list = keywords, where = in_meah_abstract_p)
+     kat <- keyword_assoc_table(corpus = articles, keyword_list = keywords, where = in_mesh_abstract_p)
  }
 }
 
