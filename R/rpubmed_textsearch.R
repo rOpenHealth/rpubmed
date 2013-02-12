@@ -19,9 +19,6 @@
 #' # Search for records with "plant" or "fish" in the abstract or MeSH headings:
 #' get_articles_by_terms(plasticity_records, list(c("plant", "fish")), where = in_mesh_abstract_p)
 #' }
-
-
-
 get_articles_by_terms <- function(corpus, term_list, where, case_sensitive = FALSE){
     corpus <- lapply(corpus, 
                      function(article){

@@ -57,36 +57,50 @@ mesh_table <- function(articles){
 }
 
 #' Builds an association table for a character vector of search terms in a corpus. This can then e.g. be fed into igraph to generate an adjacency graph of terms 
+#' Different column names can be set for the association matrix if e.g. complex regex terms are used for the keyword_list
 #' @export
 #' @param corpus a list of Pubmed records. e.g. as returned by fetch_in_chunks()
 #' @param keyword_list Character vector of keywords
+#' @param keyword_names NULL or Character vector of equal length to keyword_list
 #' @param ... arguments to be passed to get_articles_by_terms. e.g.  where = in_mesh_abstract_p
+#' 
 #' @return  matrix
 #'  @examples \dontrun{
 #'      articles <- fromJSON("Test/PCD_articles.json")
 #'      keywords <- c("effectiveness", "treatment outcome", "comorbidity", "risk factor", "incidence")
-#'      kat <- keyword_assoc_table(corpus = articles, keyword_list = keywords, where = in_mesh_abstract_p)
+#'      k_names <- c("EFF", "TREATOUT", "COMORB", "RISK", "INCID")
+#'      kat <- keyword_assoc_table(corpus = articles, keyword_list = keywords, keyword_names = k_names, where = in_mesh_abstract_p)
 #'  }
-keyword_assoc_table <- function(corpus, keyword_list, ...){
+keyword_assoc_table <- function(corpus, keyword_list, keyword_names = NULL, ...){
     kt <- data.frame(rbind(t(combn(keyword_list, 2)),
                            matrix(rep(keyword_list, each = 2), ncol= 2, byrow = TRUE)), stringsAsFactors = FALSE)
     kt$count <- sapply(1:nrow(kt), 
                        function(i){
                            if(kt[i,1] == kt[i,2]){
                                length(get_articles_by_terms(corpus = corpus, 
-                                                            term_list= list(kt[i,1]), 
-                                                            ...))
+                                                            term_list= list(kt[i,1]), ...))
                            } else{
                                length(get_articles_by_terms(corpus = corpus, 
-                                                            term_list= lapply(kt[i,], function(x) x), 
-                                                            ...))
+                                                            term_list= lapply(kt[i,], function(x) x), ...))
                            }
                        })
-    kt$Xfact <- factor(kt$X1)
+    
+    if(!is.null(keyword_names)){
+        if(length(keyword_names) != length(keyword_list)) stop("keyword_list and keyword_names are different lengths")
+        kt$Xfact <- factor(sapply(kt$X1, function(x) keyword_names[which(keyword_list %in% x)]))
+        kt$Xfact2 <- factor(sapply(kt$X2, function(x) keyword_names[which(keyword_list %in% x)]))
+    } else {
+        kt$Xfact <- factor(kt$X1)    
+        kt$Xfact2 <- factor(kt$X2)
+    }
+    print("building assoc table...")
     assoc_table <- matrix(0, nrow = length(levels(kt$Xfact)), ncol = length(levels(kt$Xfact)), 
                           dimnames = list(levels(kt$Xfact)[ordered = TRUE], levels(kt$Xfact)[ordered = TRUE]))
+    kt$Xfact <- as.character(kt$Xfact)
+    kt$Xfact2 <- as.character(kt$Xfact2)
+    
     for(i in 1:nrow(kt)){
-        assoc_table[[kt[i, "X1"], kt[i, "X2"]]] <- kt$count[i]
+        assoc_table[[kt[i, "Xfact"], kt[i, "Xfact2"]]] <- kt$count[i]
     }
     assoc_table
 }
