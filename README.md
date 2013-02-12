@@ -28,7 +28,7 @@ I have built in support for searching and processing [MeSH headings](http://www.
     - `geocode_address(address, depth = 3)`
 * mesh - Tools for processing and exploring associations between MeSH headings and other keywords
     - `mesh_assoc_table(corpus)`
-    - `keyword_assoc_table(corpus, keyword_list, ...)`
+    - `keyword_assoc_table(corpus, keyword_list, keyword_names, ...)`
     - `get_mesh_headings(article)`
     - `mesh_heading_frequency(corpus)`
     
