@@ -42,6 +42,7 @@ get_articles_by_terms <- function(corpus, term_list, where, case_sensitive = FAL
 #' 
 #' 
 record_counts_by_year <- function(corpus, year_min = FALSE, year_max = FALSE){
+    if(!length(corpus)) return(data.frame())
     years_table <- table(sapply(corpus, 
            function(x) as.numeric(x$PubmedData$History$PubMedPubDate$Year), 
            simplify = TRUE))
