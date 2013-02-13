@@ -24,9 +24,10 @@ read_article_json <- function(filename, ...){
 write_record_list <- function(articles, out_file = "", abstract_p = FALSE, markdown_p = FALSE, linestart = "* "){
     appending <- FALSE
     for(article in articles){
+        if(!is.null(article$PubmedArticle)) article <- article$PubmedArticle
         authors <- article$MedlineCitation$Article$AuthorList
         authors <- authors[sapply(authors, is.list)]
-        if(length(authors) == 1){
+        if(length(authors) < 2){
             display.author <- tryCatch(with(authors[[1]], paste(LastName, ForeName, sep = ", ")),
                                        error = function(e) "Unreadable author") # bit hacky! fix!
         } else if(length(authors) == 2){
@@ -37,9 +38,11 @@ write_record_list <- function(articles, out_file = "", abstract_p = FALSE, markd
         volume <- article$MedlineCitation$Article$Journal$JournalIssue$Volume
         year <- article$PubmedData$History$PubMedPubDate$Year
         pages <- article$MedlineCitation$Article$Pagination[["MedlinePgn"]]
+        if(is.null(pages)) pages <- "unknown page"
         abstract <- paste("Abstract:", abstract_to_text(article))
-        if(markdown_p) display_string <- "%s__%s. (%s)__. %s _%s_. %s: %s"
-        else {
+        if(markdown_p) {
+            display_string <- "%s__%s. (%s)__. %s _%s_. %s: %s"
+        } else {
             display_string <- "%s%s. (%s). %s %s. %s: %s"
             linestart <- ""
         }
@@ -54,3 +57,4 @@ write_record_list <- function(articles, out_file = "", abstract_p = FALSE, markd
         appending <- TRUE
     }
 }
+

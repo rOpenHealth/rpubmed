@@ -93,7 +93,6 @@ keyword_assoc_table <- function(corpus, keyword_list, keyword_names = NULL, ...)
         kt$Xfact <- factor(kt$X1)    
         kt$Xfact2 <- factor(kt$X2)
     }
-    print("building assoc table...")
     assoc_table <- matrix(0, nrow = length(levels(kt$Xfact)), ncol = length(levels(kt$Xfact)), 
                           dimnames = list(levels(kt$Xfact)[ordered = TRUE], levels(kt$Xfact)[ordered = TRUE]))
     kt$Xfact <- as.character(kt$Xfact)
