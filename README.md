@@ -17,7 +17,7 @@ I have built in support for searching and processing [MeSH headings](http://www.
     - `fetch_in_chunks(ids, chunk_size = 500, delay = 0, ...)`
     - `pubmed_fetch(ids, file_format = "xml", as_r_object = TRUE, ...)`
 * textsearch  - Tools for text-mining of abstracts and metadata from downloaded records
-    - `get_articles_by_terms(corpus, term_list, where, case_sensitive = FALSE)`
+    - `get_articles_by_terms(corpus, term_list, where, case_sensitive = FALSE, ...)`
     - `record_counts_by_year(corpus)`
 * io - saving records to disk and printing summaries of abstract lists to file or sdout
     - `write_JSON_file(x, file)`
