@@ -7,7 +7,7 @@ different items in the list recursively filter the list
 e.g. list("gprd", "diabetes") returns articles mentioning gprd and diabtes}
 \usage{
   get_articles_by_terms(corpus, term_list, where,
-    case_sensitive = FALSE)
+    case_sensitive = FALSE, ...)
 }
 \arguments{
   \item{corpus}{list of downloaded Pubmed records, e.g.
@@ -24,6 +24,9 @@ e.g. list("gprd", "diabetes") returns articles mentioning gprd and diabtes}
 
   \item{case_sensitive}{boolean is the search case
   sensitive?}
+
+  \item{dots}{arguments to be passed down to grep, e.g.
+  invert = TRUE, perl = TRUE}
 }
 \value{
   list containing abstracts and metadata for each ID

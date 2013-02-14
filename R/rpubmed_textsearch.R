@@ -9,6 +9,7 @@
 #' @param term_list list of character vectors giving the search terms. list elements are searched for reductively (using &). Elements of internal charater vectors are combined into 'or' terms
 #' @param where A predicate function referring to a search in an area of the record. Choose from in_abstract_p, in_mesh_p or in_mesh_abstract_p
 #' @param case_sensitive boolean is the search case sensitive?
+#' @param dots arguments to be passed down to grep, e.g. invert = TRUE, perl = TRUE
 #' @return list containing abstracts and metadata for each ID matching the search criteria
 #' @examples \dontrun{
 #' plasticity_records <- fetch_in_chunks(plasticity_ids)
@@ -19,10 +20,10 @@
 #' # Search for records with "plant" or "fish" in the abstract or MeSH headings:
 #' get_articles_by_terms(plasticity_records, list(c("plant", "fish")), where = in_mesh_abstract_p)
 #' }
-get_articles_by_terms <- function(corpus, term_list, where, case_sensitive = FALSE){
+get_articles_by_terms <- function(corpus, term_list, where, case_sensitive = FALSE, ...){
     corpus <- lapply(corpus, 
                      function(article){
-                         if(where(article, term_list[[1]], case_sensitive)) article
+                         if(where(article, term_list[[1]], case_sensitive, ...)) article
                      })
     corpus <- corpus[!sapply(corpus, is.null)]
     if(length(term_list) <= 1){
@@ -70,34 +71,34 @@ mesh_to_text <- function(article){
 
 
 #' predicate function for presence of a term in an article text
-term_in_text_p <- function(term, text, case_sensitive){
-    ifelse(length(grep(pattern = term, x = text, ignore.case = !case_sensitive)), TRUE, FALSE)
+term_in_text_p <- function(term, text, case_sensitive, ...){
+    ifelse(length(grep(pattern = term, x = text, ignore.case = !case_sensitive, ...)), TRUE, FALSE)
 }
 
 #' predicate function for searching abstracts 
-in_abstract_p <- function(article, terms, case_sensitive = FALSE){
+in_abstract_p <- function(article, terms, case_sensitive = FALSE, ...){
     # are terms found in the abstract body?
     pattern <- paste(terms, collapse = "|")
     term_in_text_p(term = pattern,
-                    text = abstract_to_text(article), case_sensitive)
+                    text = abstract_to_text(article), case_sensitive, ...)
 }
 
 #' predicate function for searching MeSH headings
-in_mesh_headings_p <- function(article, terms, case_sensitive = FALSE){
+in_mesh_headings_p <- function(article, terms, case_sensitive = FALSE, ...){
     # Are terms found in the mesh headings?
     pattern <- paste(terms, collapse = "|")
     mesh <- mesh_to_text(article)
     term_in_text_p(term = pattern,
-                    text = mesh, case_sensitive)
+                    text = mesh, case_sensitive, ...)
 }
 
 #' predicate function for searching abstracts and MeSH headings
-in_mesh_abstract_p <- function(article, terms, case_sensitive = FALSE){
+in_mesh_abstract_p <- function(article, terms, case_sensitive = FALSE, ...){
     # Are terms found in the mesh headings?
     pattern <- paste(terms, collapse = "|")
     mesh_article <- paste(mesh_to_text(article), abstract_to_text(article))
     term_in_text_p(term = pattern,
-                    text = mesh_article, case_sensitive)
+                    text = mesh_article, case_sensitive, ...)
 }
 
 
