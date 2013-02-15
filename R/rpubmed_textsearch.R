@@ -69,6 +69,11 @@ mesh_to_text <- function(article){
     paste(unlist(get_mesh_headings(article)), collapse = " ")
 }
 
+#' concatenates a list of MeSH headings to a single string
+title_to_text <- function(article){
+    paste(unlist(article$MedlineCitation$Article$ArticleTitle), collapse = " ")
+}
+
 
 #' predicate function for presence of a term in an article text
 term_in_text_p <- function(term, text, case_sensitive, ...){
@@ -101,6 +106,13 @@ in_mesh_abstract_p <- function(article, terms, case_sensitive = FALSE, ...){
                     text = mesh_article, case_sensitive, ...)
 }
 
-
+#' predicate function for searching in title and abstract
+in_record_text_p <- function(article, terms, case_sensitive = FALSE, ...){
+    # Are terms found in the mesh headings?
+    pattern <- paste(terms, collapse = "|")
+    mesh_article <- paste(title_to_text(article), abstract_to_text(article))
+    term_in_text_p(term = pattern,
+                   text = mesh_article, case_sensitive, ...)
+}
 
 
