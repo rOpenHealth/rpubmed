@@ -1,6 +1,8 @@
 rpubmed
 =======
 
+[![Build Status](https://api.travis-ci.org/ropensci/rpubmed.png)](https://travis-ci.org/ropensci/rpubmed)
+
 Tools for extracting and processing records from Pubmed and Pubmed Central.
 ----------------------------------------------------------------------------
 
