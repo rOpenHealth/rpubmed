@@ -3,7 +3,7 @@
 \title{Function to get coordinates from a supplied address
 If no match is found, it recursively calls itself on the address minus the first line of the address}
 \usage{
-  geocode_address(address, depth = 3)
+  geocode_address(address, depth = 3, sleeper = 0)
 }
 \arguments{
   \item{address}{string}
@@ -13,6 +13,9 @@ If no match is found, it recursively calls itself on the address minus the first
   hit, the function is called again with the first line of
   the address removed. The process is repeated depth times
   before returning NAs}
+
+  \item{sleeper}{numeric Number of seconds to pause after
+  doing the geocoding}
 }
 \value{
   vector of address, lat, long

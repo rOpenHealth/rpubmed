@@ -28,9 +28,9 @@
 geocode_addresses <- function(addresses, sleeper = 0.33, depth = 3){
     coords <- t(sapply(addresses, 
                        function(addr){
-                           as.numeric(geocode_address(addr, depth = depth))
+                           as.numeric(geocode_address(addr, depth = depth, sleeper = sleeper))
                        }))
-    data.frame(address = row.name(coords), lat = coords[,1], long = coords[,2])
+    data.frame(address = row.names(coords), lat = coords[,1], long = coords[,2])
 }
 
 
@@ -57,6 +57,7 @@ get_article_location_data <- function(abstracts){
 #' @export
 #' @param address string 
 #' @param depth depth integer recursion depth for attempting to get coordinates. If the full address fails to get a hit, the function is called again with the first line of the address removed. The process is repeated depth times before returning NAs
+#' @param sleeper numeric Number of seconds to pause after doing the geocoding
 #' @return vector of address, lat, long
 #' 
 #' @examples \dontrun{
@@ -64,8 +65,9 @@ get_article_location_data <- function(abstracts){
 #' geocode_address(x)
 #' }
 
-geocode_address <- function(address, depth = 3){
+geocode_address <- function(address, depth = 3, sleeper = 0){
     coords <- geocode(address)
+    Sys.sleep(sleeper)
     if(!is.null(names(coords)) & is.na(coords[1]) & depth > 0){
         address <- sub(pattern="[[:alnum:][:punct:][:space:]][^,]*, ?", "", address)
         return(geocode_address(address, depth = depth -1))
