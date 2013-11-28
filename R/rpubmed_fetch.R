@@ -27,7 +27,7 @@ fetch_in_chunks <- function(ids, chunk_size = 500, delay = 0, ...){
 #' Download data from Pubmed
 #' 
 #' 
-#' 
+#' @importFrom rentrez entrez_email
 #' @export 
 #' @param ids integer Pubmed ID's to get abstracts and metadata from
 #' @param file_format character Format in which to get data (eg, fasta, xml...) default = "xml"
