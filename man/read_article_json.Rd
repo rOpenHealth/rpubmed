@@ -4,6 +4,11 @@
 \usage{
 read_article_json(filename, ...)
 }
+\arguments{
+  \item{filename}{a filename to read from}
+
+  \item{...}{arguments to be passed to fromJSON}
+}
 \description{
 Redundant wrapper around fromJSON
 }

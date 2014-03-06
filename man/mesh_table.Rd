@@ -4,6 +4,9 @@
 \usage{
 mesh_table(articles)
 }
+\arguments{
+  \item{articles}{collection of pubmed articles}
+}
 \description{
 helper function for mesh_assoc_table
 }

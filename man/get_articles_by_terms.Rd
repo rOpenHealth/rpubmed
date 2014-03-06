@@ -24,7 +24,7 @@ get_articles_by_terms(corpus, term_list, where, case_sensitive = FALSE, ...)
   \item{case_sensitive}{boolean is the search case
   sensitive?}
 
-  \item{dots}{arguments to be passed down to grep, e.g.
+  \item{...}{arguments to be passed down to grep, e.g.
   invert = TRUE, perl = TRUE}
 }
 \value{

@@ -25,7 +25,7 @@ fetch_in_chunks <- function(ids, chunk_size = 500, delay = 0, ...){
 #' Download data from Pubmed
 #' 
 #' 
-#' @importFrom rentrez entrez_email
+#' @importFrom rentrez entrez_email 
 #' @export 
 #' @param ids integer Pubmed ID's to get abstracts and metadata from
 #' @param file_format character Format in which to get data (eg, fasta, xml...) default = "xml"
@@ -55,6 +55,8 @@ pubmed_fetch <- function(ids, file_format = "xml", as_r_object = TRUE, ...){
 }
 
 #' Helper function to split a vector v into list of chunks of chunk_size
+#' @param v a vector to be split into chunks
+#' @param chunk_size Integer size of the individual chunks
 chunker <- function(v, chunk_size){
     split(v, ceiling(seq_along(v)/chunk_size))
 }

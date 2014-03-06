@@ -5,7 +5,7 @@
 mesh_heading_frequency(corpus)
 }
 \arguments{
-  \item{article}{List representing a single Pubmed Record
+  \item{corpus}{List representing a single Pubmed Record
   e.g. an element from a list returned from
   fetch_in_chunks()}
 }

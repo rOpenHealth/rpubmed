@@ -6,12 +6,12 @@ License: GPL-3
 Title: rpubmed
 Description: Tools for extracting literature data from Pubmed.
 Depends:
-    R (>= 2.15)
+    R (>= 2.15),
+    rentrez
 Imports:
     RCurl,
     RJSONIO,
     XML,
-    rentrez
 Suggests:
     testthat,
     roxygen2,

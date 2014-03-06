@@ -39,6 +39,7 @@ mesh_assoc_table <- function(corpus){
 }
 
 #' helper function for mesh_assoc_table
+#' @param articles collection of pubmed articles
 mesh_table <- function(articles){
     m_table <- data.frame(do.call(rbind, 
                                   lapply(1:length(articles), 
@@ -121,7 +122,8 @@ get_mesh_headings <- function(article){
 
 #' Returns a data frame of all MeSH headings in a corpus, with frequencies for each
 #' @export
-#' @param article List representing a single Pubmed Record e.g. an element from a list returned from fetch_in_chunks()
+#' @param corpus List representing a single Pubmed Record e.g. an element from a list returned from fetch_in_chunks()
+#' 
 #' @return list of MeSHHeadings
 #' 
 #' 

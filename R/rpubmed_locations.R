@@ -23,8 +23,6 @@
 #' map("world", col="#f2f2f2", fill=TRUE, bg="white", lwd=0.05)
 #' points(coords$long, coords$lat, col = "red", pch = 20)
 #' }
-
-
 geocode_addresses <- function(addresses, sleeper = 0.33, depth = 3){
     coords <- t(sapply(addresses, 
                        function(addr){
@@ -77,6 +75,7 @@ geocode_address <- function(address, depth = 3, sleeper = 0){
 
 
 #' Helper function for geocode_address
+#' @param address A string with an address
 geocode <- function(address){
     gcStr <- gsub(' ','%20', address) #Encode URL Parameters
     #Open Connection

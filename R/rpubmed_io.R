@@ -1,12 +1,16 @@
 #' Write a list of (e.g.) Pubmed records (e.g.) from rpubmed_fetch_in_chunks to json file 
 #' @export
 #' @import RJSONIO
+#' @param x object to be serialised
+#' @param file filename
 write_JSON_file <- function(x, file){
     cat(toJSON(x), file = file)
 }
 
 #' Redundant wrapper around fromJSON
 #' @import RJSONIO
+#' @param filename a filename to read from
+#' @param ... arguments to be passed to fromJSON
 read_article_json <- function(filename, ...){
     fromJSON(filename, ...)
 }
