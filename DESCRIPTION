@@ -16,10 +16,3 @@ Suggests:
     testthat,
     roxygen2,
     maps
-Collate:
-    'global_vars.R'
-    'rpubmed_fetch.R'
-    'rpubmed_io.R'
-    'rpubmed_textsearch.R'
-    'rpubmed_locations.R'
-    'rpubmed_mesh.R'

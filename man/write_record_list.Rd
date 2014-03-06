@@ -2,9 +2,8 @@
 \alias{write_record_list}
 \title{Writes article title and citation data to file or stdout.  Can optionally also output abstracts and output as Markdown, with customisable line starts, e.g. for unordered lists}
 \usage{
-  write_record_list(articles, out_file = "",
-    abstract_p = FALSE, markdown_p = FALSE,
-    linestart = "* ")
+write_record_list(articles, out_file = "", abstract_p = FALSE,
+  markdown_p = FALSE, linestart = "* ")
 }
 \arguments{
   \item{articles}{A list of Pubmed Records e.g. as returned
@@ -20,13 +19,10 @@
 
   \item{markdown_p}{boolean Output as markdown?}
 }
-\value{
-  NULL
-}
 \description{
-  Writes article title and citation data to file or stdout.
-  Can optionally also output abstracts and output as
-  Markdown, with customisable line starts, e.g. for
-  unordered lists
+Writes article title and citation data to file or stdout.
+Can optionally also output abstracts and output as
+Markdown, with customisable line starts, e.g. for unordered
+lists
 }
 

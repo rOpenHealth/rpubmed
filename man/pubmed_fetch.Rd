@@ -2,8 +2,7 @@
 \alias{pubmed_fetch}
 \title{Download data from Pubmed}
 \usage{
-  pubmed_fetch(ids, file_format = "xml",
-    as_r_object = TRUE, ...)
+pubmed_fetch(ids, file_format = "xml", as_r_object = TRUE, ...)
 }
 \arguments{
   \item{ids}{integer Pubmed ID's to get abstracts and
@@ -19,11 +18,11 @@
   request}
 }
 \value{
-  list or character string containing abstratcs and
-  metadata for each ID (see as_r_object)
+list or character string containing abstratcs and metadata
+for each ID (see as_r_object)
 }
 \description{
-  Download data from Pubmed
+Download data from Pubmed
 }
 \examples{
 \dontrun{

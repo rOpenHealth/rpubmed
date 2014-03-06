@@ -2,9 +2,9 @@
 \alias{mesh_table}
 \title{helper function for mesh_assoc_table}
 \usage{
-  mesh_table(articles)
+mesh_table(articles)
 }
 \description{
-  helper function for mesh_assoc_table
+helper function for mesh_assoc_table
 }
 

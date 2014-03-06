@@ -1,10 +1,8 @@
 \name{fetch_in_chunks}
 \alias{fetch_in_chunks}
-\title{Downloads abstracts and Metadata from Pubmed, storing as R objects
-Splits large id vectors into a list of smaller chunks, so as not to hammer the entrez server!
-If you are making large bulk downloads, consider setting a delay so the downloading starts at off-peak USA times.}
+\title{Downloads abstracts and Metadata from Pubmed, storing as R objects}
 \usage{
-  fetch_in_chunks(ids, chunk_size = 500, delay = 0, ...)
+fetch_in_chunks(ids, chunk_size = 500, delay = 0, ...)
 }
 \arguments{
   \item{ids}{integer Pubmed ID's to get abstracts and
@@ -20,14 +18,15 @@ If you are making large bulk downloads, consider setting a delay so the download
   request}
 }
 \value{
-  list containing abstratcs and metadata for each ID
+list containing abstratcs and metadata for each ID
 }
 \description{
-  Downloads abstracts and Metadata from Pubmed, storing as
-  R objects Splits large id vectors into a list of smaller
-  chunks, so as not to hammer the entrez server! If you are
-  making large bulk downloads, consider setting a delay so
-  the downloading starts at off-peak USA times.
+Splits large id vectors into a list of smaller chunks, so
+as not to hammer the entrez server!
+}
+\details{
+If you are making large bulk downloads, consider setting a
+delay so the downloading starts at off-peak USA times.
 }
 \examples{
 \dontrun{

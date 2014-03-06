@@ -3,8 +3,7 @@
 \title{Builds an association table for a character vector of search terms in a corpus. This can then e.g. be fed into igraph to generate an adjacency graph of terms
 Different column names can be set for the association matrix if e.g. complex regex terms are used for the keyword_list}
 \usage{
-  keyword_assoc_table(corpus, keyword_list,
-    keyword_names = NULL, ...)
+keyword_assoc_table(corpus, keyword_list, keyword_names = NULL, ...)
 }
 \arguments{
   \item{corpus}{a list of Pubmed records. e.g. as returned
@@ -19,14 +18,14 @@ Different column names can be set for the association matrix if e.g. complex reg
   get_articles_by_terms. e.g.  where = in_mesh_abstract_p}
 }
 \value{
-  matrix
+matrix
 }
 \description{
-  Builds an association table for a character vector of
-  search terms in a corpus. This can then e.g. be fed into
-  igraph to generate an adjacency graph of terms Different
-  column names can be set for the association matrix if
-  e.g. complex regex terms are used for the keyword_list
+Builds an association table for a character vector of
+search terms in a corpus. This can then e.g. be fed into
+igraph to generate an adjacency graph of terms Different
+column names can be set for the association matrix if e.g.
+complex regex terms are used for the keyword_list
 }
 \examples{
 \dontrun{

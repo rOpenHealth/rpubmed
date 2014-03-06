@@ -2,10 +2,10 @@
 \alias{write_JSON_file}
 \title{Write a list of (e.g.) Pubmed records (e.g.) from rpubmed_fetch_in_chunks to json file}
 \usage{
-  write_JSON_file(x, file)
+write_JSON_file(x, file)
 }
 \description{
-  Write a list of (e.g.) Pubmed records (e.g.) from
-  rpubmed_fetch_in_chunks to json file
+Write a list of (e.g.) Pubmed records (e.g.) from
+rpubmed_fetch_in_chunks to json file
 }
 

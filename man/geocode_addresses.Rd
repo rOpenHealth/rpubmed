@@ -3,7 +3,7 @@
 \title{Returns a data frame of geocoded addresses with longitude and latitudes
 Uses the Google Maps geocode API}
 \usage{
-  geocode_addresses(addresses, sleeper = 0.33, depth = 3)
+geocode_addresses(addresses, sleeper = 0.33, depth = 3)
 }
 \arguments{
   \item{addresses}{A character vector of addresses for
@@ -19,11 +19,11 @@ Uses the Google Maps geocode API}
   before returning NAs}
 }
 \value{
-  data frame of addresses, latitudes and longitudes
+data frame of addresses, latitudes and longitudes
 }
 \description{
-  Returns a data frame of geocoded addresses with longitude
-  and latitudes Uses the Google Maps geocode API
+Returns a data frame of geocoded addresses with longitude
+and latitudes Uses the Google Maps geocode API
 }
 \examples{
 \dontrun{

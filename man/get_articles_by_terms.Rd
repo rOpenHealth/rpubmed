@@ -6,8 +6,7 @@ e.g list(c("gprd", "diabetes")) returns all articles mentioning either gprd or d
 different items in the list recursively filter the list
 e.g. list("gprd", "diabetes") returns articles mentioning gprd and diabtes}
 \usage{
-  get_articles_by_terms(corpus, term_list, where,
-    case_sensitive = FALSE, ...)
+get_articles_by_terms(corpus, term_list, where, case_sensitive = FALSE, ...)
 }
 \arguments{
   \item{corpus}{list of downloaded Pubmed records, e.g.
@@ -29,17 +28,17 @@ e.g. list("gprd", "diabetes") returns articles mentioning gprd and diabtes}
   invert = TRUE, perl = TRUE}
 }
 \value{
-  list containing abstracts and metadata for each ID
-  matching the search criteria
+list containing abstracts and metadata for each ID matching
+the search criteria
 }
 \description{
-  Returns a list of articles matching the termlist items in
-  the termlist can be strings or character vectors,
-  concatenated to an "or" regex e.g list(c("gprd",
-  "diabetes")) returns all articles mentioning either gprd
-  or diabetes. different items in the list recursively
-  filter the list e.g. list("gprd", "diabetes") returns
-  articles mentioning gprd and diabtes
+Returns a list of articles matching the termlist items in
+the termlist can be strings or character vectors,
+concatenated to an "or" regex e.g list(c("gprd",
+"diabetes")) returns all articles mentioning either gprd or
+diabetes. different items in the list recursively filter
+the list e.g. list("gprd", "diabetes") returns articles
+mentioning gprd and diabtes
 }
 \examples{
 \dontrun{

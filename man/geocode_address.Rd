@@ -3,7 +3,7 @@
 \title{Function to get coordinates from a supplied address
 If no match is found, it recursively calls itself on the address minus the first line of the address}
 \usage{
-  geocode_address(address, depth = 3, sleeper = 0)
+geocode_address(address, depth = 3, sleeper = 0)
 }
 \arguments{
   \item{address}{string}
@@ -18,12 +18,12 @@ If no match is found, it recursively calls itself on the address minus the first
   doing the geocoding}
 }
 \value{
-  vector of address, lat, long
+vector of address, lat, long
 }
 \description{
-  Function to get coordinates from a supplied address If no
-  match is found, it recursively calls itself on the
-  address minus the first line of the address
+Function to get coordinates from a supplied address If no
+match is found, it recursively calls itself on the address
+minus the first line of the address
 }
 \examples{
 \dontrun{

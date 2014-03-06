@@ -2,7 +2,7 @@
 \alias{get_mesh_headings}
 \title{Returns a list of MeSH headings for an article}
 \usage{
-  get_mesh_headings(article)
+get_mesh_headings(article)
 }
 \arguments{
   \item{article}{List representing a single Pubmed Record
@@ -10,9 +10,9 @@
   fetch_in_chunks()}
 }
 \value{
-  list of MeSH Headings
+list of MeSH Headings
 }
 \description{
-  Returns a list of MeSH headings for an article
+Returns a list of MeSH headings for an article
 }
 

@@ -2,9 +2,9 @@
 \alias{geocode}
 \title{Helper function for geocode_address}
 \usage{
-  geocode(address)
+geocode(address)
 }
 \description{
-  Helper function for geocode_address
+Helper function for geocode_address
 }
 
